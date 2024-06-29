@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon & DMM & Google 検索リンク生成</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1 class="h3 mt-4 mb-3">Amazon & DMM & Google 検索リンク生成</h1>
+        
+        <div class="mb-4">
+            <p>歴史上の人物を複数人調べる時に毎回AmazonのKindleを買おうとしてアプリの画面が開いて面倒だったのでカンマ区切りで入力した単語からAmazon、dmm、Google検索のリンクを生成するツールです。
+デフォルトで幕末の人物が入っていますが、例えば「吉田茂, 池田勇人, 佐藤栄作, 田中角栄」といれても活用できます。</p>
+        </div>
+
+        <div class="form-group">
+            <label for="searchTerms">検索ワード（コンマ区切り）:</label>
+            <input id="searchTerms" type="text" class="form-control" v-model="searchTermsInput">
+        </div>
+        
+        <div class="button-group">
+            <button class="btn btn-primary" @click="generateLinks">リンクを生成する</button>
+            <div class="toggle-container">
+                <input type="checkbox" id="shuffleToggle" v-model="shuffleEnabled" @change="updateDisplayedLinks">
+                <label for="shuffleToggle" class="toggle-label">
+                    <span class="toggle-inner"></span>
+                    <span class="toggle-switch"></span>
+                </label>
+                <span>{{ shuffleButtonText }}</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-3" v-for="(link, index) in displayedLinks" :key="index">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ link.searchTerm }}</h5>
+                        <div class="card-links">
+                            <a :href="link.amazonUrl" target="_blank" class="amazon-link">Amazonで検索する</a>
+                            <a :href="link.dmmUrl" target="_blank" class="dmm-link">DMMで検索する</a>
+                            <a :href="link.googleUrl" target="_blank" class="google-link">Googleで検索する</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <p>→<a href="../index.html">他のツール</a></p>
+        </div>
+    </footer>
+</body>
+</html>
