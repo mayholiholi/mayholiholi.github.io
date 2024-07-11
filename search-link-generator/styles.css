@@ -1,6 +1,5 @@
-/* カードのスタイル */
 .card {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid #e0e0e0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
@@ -34,13 +33,14 @@
 }
 
 .card-links a {
-    margin: 6px 0;
+    margin: 3px 0;
     padding: 10px 15px;
     border: 1px solid;
-    border-radius: 30px;
+    border-radius: 15px;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     width: 100%;
+    font-size: 0.85rem;
     text-align: center;
     color: #ffffff;
     font-weight: bold;
@@ -92,28 +92,26 @@
     margin-top: 20px;
 }
 
-/* フレキシブルデザイン用CSS */
 .button-group {
     display: flex;
-    flex-direction: column; /* 縦並びに変更 */
+    flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
 
 .button-group .btn {
     width: 100%;
-    max-width: 300px; /* 最大幅を設定 */
-    margin: 10px 0; /* 上下にマージンを設定 */
+    max-width: 300px;
+    margin: 10px 0;
 }
 
-/* チェックボックスのカスタムスタイル */
 .checkbox-container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 300px; /* 最大幅を設定 */
-    margin: 10px 0; /* 上下にマージンを設定 */
+    max-width: 300px;
+    margin: 10px 0;
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -155,18 +153,29 @@
     transform: rotate(45deg);
 }
 
-/* メディアクエリでさらに調整 */
 @media (max-width: 768px) {
     .button-group {
-        flex-direction: column; /* 縦並びに変更 */
+        flex-direction: column;
     }
 
     .checkbox-container {
-        flex-direction: column; /* 縦並びに変更 */
+        flex-direction: column;
         align-items: flex-start;
     }
 
     .checkbox-container label {
-        margin-top: 10px; /* 上にマージンを追加 */
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
